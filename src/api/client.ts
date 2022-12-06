@@ -147,7 +147,12 @@ export default class ApiClient {
 
     const initializeFile = await fetch(`${url}/initialize.js`, {
       timeout: ms(timeout),
-    }).then((r) => r.text())
+    })
+      .then((r) => r.text())
+      .catch((err) => {
+        logger.error(`Unable to retrieve API key for ${name}`)
+        throw err
+      })
 
     const split = initializeFile.split('=')
     const data = split[1].trim().slice(0, -1)
