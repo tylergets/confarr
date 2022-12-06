@@ -6,6 +6,7 @@ Currently, it does a few things
  * Add all compatible apps (sonarr, radarr, lidarr, readarr) to prowlarr
    * Add tags to apps, including an automatic one defining its type
  * Add all downloaders (transmission, qbittorrent) to all compatible apps
+ * Add media paths to compatible apps (sonarr, radarr, lidarr)
 
 I will be adding more features as requested and needed by myself, feel free to [create an issue or PR!](https://github.com/tylergets/confarr/issues/new)
 
