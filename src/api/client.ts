@@ -100,7 +100,6 @@ export default class ApiClient {
   }
 
   async createQbittorrentClient(name: string, host: string, port = 443, username = 'admin', password = 'adminadmin') {
-    logger.info('createQbittorrentClient')
     const body = {
       name,
       enable: true,
@@ -158,6 +157,8 @@ export default class ApiClient {
     const data = split[1].trim().slice(0, -1)
 
     const parsed = JSON5.parse(data)
+
+    logger.debug(`Connected to service ${name} at ${baseURL}, apiKey: ${parsed.apiKey} apiRoot: ${parsed.apiRoot}`)
 
     return new ApiClient(name, baseURL, parsed.apiRoot, parsed.apiKey)
   }
