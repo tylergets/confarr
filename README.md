@@ -7,14 +7,15 @@ Currently, it does a few things
    * Add tags to apps, including an automatic one defining its type
  * Add all downloaders (transmission, qbittorrent) to all compatible apps
 
-I will be adding more features as requested and needed by myself, feel free to [create an issue](https://github.com/tylergets/confarr/issues/new)
+I will be adding more features as requested and needed by myself, feel free to [create an issue or PR!](https://github.com/tylergets/confarr/issues/new)
 
 ## Usage
+Create a config.json, sample below, in your current directory; then use the following docker command to apply your configuration.
+
 ```shell
 docker pull ghcr.io/tylergets/confarr:latest
 
 docker run \
-  -e DRY_RUN=true \
   -v $(pwd):/config \
   ghcr.io/tylergets/confarr
 ```
