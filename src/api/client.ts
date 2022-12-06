@@ -120,6 +120,7 @@ export default class ApiClient {
   }
 
   static async initializeHack(name: string, baseURL: string, port = 80, https = false, dryRun = false) {
+    const timeout = config.get('timeout')
     let url = `${baseURL}`
 
     if (!url.startsWith('http')) {
@@ -130,7 +131,7 @@ export default class ApiClient {
       url = url + ':' + port
     }
 
-    logger.debug(`Attempting to retrieve API key for ${name} at ${url}`)
+    logger.debug(`Attempting to retrieve API key for ${name} at ${url} - ${timeout} timeout`)
 
     if (dryRun) {
       return new ApiClient(name, url, '/api', '123', true)
@@ -144,7 +145,9 @@ export default class ApiClient {
       })
     }
 
-    const initializeFile = await fetch(`${url}/initialize.js`).then((r) => r.text())
+    const initializeFile = await fetch(`${url}/initialize.js`, {
+      timeout: ms(timeout),
+    }).then((r) => r.text())
 
     const split = initializeFile.split('=')
     const data = split[1].trim().slice(0, -1)

@@ -25,6 +25,12 @@ export const config = convict({
     default: false,
     env: 'WAIT_ON',
   },
+  timeout: {
+    doc: 'Amount of time to wait when making API calls',
+    format: String,
+    default: '30s',
+    env: 'TIMEOUT',
+  },
   services: {
     doc: 'Services array',
     format: Array,
