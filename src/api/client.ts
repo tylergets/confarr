@@ -37,6 +37,7 @@ export default class ApiClient {
 
   async createResource(resource: string, body: any) {
     const url = `${this.baseUrl}${this.apiRoot}/${resource}`
+    logger.debug(`POST ${url}`)
 
     if (this.dryRun) {
       logger.debug(`DryRun, create ${url} = ${JSON.stringify(body, null, 2)}`)
@@ -133,7 +134,7 @@ export default class ApiClient {
     logger.debug(`Attempting to retrieve API key for ${name} at ${url} - ${timeout} timeout`)
 
     if (dryRun) {
-      return new ApiClient(name, url, '/api', '123', true)
+      return new ApiClient(name, url, '/api/v3', '123', true)
     }
 
     if (config.get('waitOn')) {
@@ -160,6 +161,6 @@ export default class ApiClient {
 
     logger.debug(`Connected to service ${name} at ${baseURL}, apiKey: ${parsed.apiKey} apiRoot: ${parsed.apiRoot}`)
 
-    return new ApiClient(name, baseURL, parsed.apiRoot, parsed.apiKey)
+    return new ApiClient(name, url, parsed.apiRoot, parsed.apiKey)
   }
 }
