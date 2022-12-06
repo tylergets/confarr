@@ -4,6 +4,7 @@ import { logger } from '../logger'
 import waitOn from 'wait-on'
 import ms from 'ms'
 import { formatAsFields } from '../helpers'
+import { config } from '../config'
 
 export default class ApiClient {
   name: string
@@ -34,12 +35,15 @@ export default class ApiClient {
     })
   }
 
-  async createResource(url: string, body: any) {
+  async createResource(resource: string, body: any) {
+    const url = `${this.baseUrl}${this.apiRoot}/${resource}`
+
     if (this.dryRun) {
       logger.debug(`DryRun, create ${url} = ${JSON.stringify(body, null, 2)}`)
       return {}
     }
-    const resp = await fetch(`${this.baseUrl}${this.apiRoot}/${url}`, {
+
+    const resp = await fetch(url, {
       method: 'POST',
       headers: {
         'X-Api-Key': this.authKey,
@@ -115,21 +119,32 @@ export default class ApiClient {
     return this.createResource('downloadclient', body)
   }
 
-  static async initializeHack(name: string, baseURL: string, dryRun = false) {
-    // logger.await(`Waiting for ${name}`);
-    const url = `${baseURL}`
+  static async initializeHack(name: string, baseURL: string, port = 80, https = false, dryRun = false) {
+    let url = `${baseURL}`
 
-    if (dryRun) {
-      return new ApiClient(name, baseURL, '/api', '123', true)
+    if (!url.startsWith('http')) {
+      url = (https ? 'https://' : 'http://') + url
     }
 
-    await waitOn({
-      resources: [url.replace('https://', 'https-get://').replace('http://', 'http-get://')],
-      interval: ms('1s'),
-      timeout: ms('5m'),
-    })
+    if (port) {
+      url = url + ':' + port
+    }
 
-    const initializeFile = await fetch(`${baseURL}/initialize.js`).then((r) => r.text())
+    logger.debug(`Attempting to retrieve API key for ${name} at ${url}`)
+
+    if (dryRun) {
+      return new ApiClient(name, url, '/api', '123', true)
+    }
+
+    if (config.get('waitOn')) {
+      await waitOn({
+        resources: [url.replace('https://', 'https-get://').replace('http://', 'http-get://')],
+        interval: ms('1s'),
+        timeout: ms('5m'),
+      })
+    }
+
+    const initializeFile = await fetch(`${url}/initialize.js`).then((r) => r.text())
 
     const split = initializeFile.split('=')
     const data = split[1].trim().slice(0, -1)

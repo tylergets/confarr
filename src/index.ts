@@ -24,7 +24,7 @@ class ConfarrApp {
     logger.debug(`Loaded ${services.length} services`)
 
     for (const service of services) {
-      const apiClient = await ApiClient.initializeHack(service.id, service.host, dryRun)
+      const apiClient = await ApiClient.initializeHack(service.id, service.host, service.port ?? 80, service.https ?? false, dryRun)
       service.apiClient = apiClient
       service.apiKey = apiClient.authKey
 
