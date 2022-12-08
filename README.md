@@ -33,7 +33,7 @@ Save as config.json in your local directory.
     {
       "id": "radarr",
       "type": "radarr",
-      "host": "https://radarr.example.com",
+      "host": "radarr.example.com",
       "port": 443,
       "https": true,
       "paths": [
@@ -46,7 +46,7 @@ Save as config.json in your local directory.
     {
       "id": "sonarr",
       "type": "sonarr",
-      "host": "https://sonarr.example.com",
+      "host": "sonarr.example.com",
       "port": 443,
       "https": true,
       "paths": [
@@ -59,14 +59,14 @@ Save as config.json in your local directory.
     {
       "id": "prowlarr",
       "type": "prowlarr",
-      "host": "https://prowlarr.example.com",
+      "host": "prowlarr.example.com",
       "port": 443,
       "https": true
     },
     {
       "id": "readarr",
       "type": "readarr",
-      "host": "https://readarr.example.com",
+      "host": "readarr.example.com",
       "port": 443,
       "https": true,
       "tags": [
@@ -89,7 +89,15 @@ Save as config.json in your local directory.
       "port": 443,
       "https": true
     },
-    {
+     {
+        "id": "sabnzbd",
+        "type": "sabnzbd",
+        "host": "sabnzbd.example.com",
+        "port": 8080,
+        "https": false,
+        "apiKey": "apikey"
+     },
+     {
       "id": "qbittorrent",
       "type": "qbittorrent",
       "host": "qbittorrent.example.com",

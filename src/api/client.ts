@@ -119,6 +119,24 @@ export default class ApiClient {
     return this.createResource('downloadclient', body)
   }
 
+  async createSabnzbdClient(name: string, host: string, port = 443, apiKey: string) {
+    const body = {
+      name,
+      enable: true,
+      protocol: 'torrent',
+      implementation: 'Sabnzbd',
+      configContract: 'SabnzbdSettings',
+      fields: formatAsFields({
+        host,
+        port: port.toString(),
+        useSsl: port === 443,
+        apiKey,
+      }),
+    }
+
+    return this.createResource('downloadclient', body)
+  }
+
   static async initializeHack(name: string, baseURL: string, port = 80, https = false, dryRun = false) {
     const timeout = config.get('timeout')
     let url = `${baseURL}`

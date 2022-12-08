@@ -63,6 +63,9 @@ class ConfarrApp {
           downloadClient.password,
         )
       }
+      if (downloadClient.type === 'sabnzbd') {
+        await target.apiClient.createSabnzbdClient(downloadClient.id, downloadClient.host, downloadClient.port, downloadClient.apiKey)
+      }
     }
   }
 

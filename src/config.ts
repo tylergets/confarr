@@ -18,6 +18,7 @@ export const config = convict({
     format: Boolean,
     default: false,
     env: 'DRY_RUN',
+    arg: 'dry-run',
   },
   waitOn: {
     doc: 'Wait on services before running calls',
