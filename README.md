@@ -29,84 +29,84 @@ Save as config.json in your local directory.
 
 ```json
 {
-  "services": [
-    {
-      "id": "radarr",
-      "type": "radarr",
-      "host": "radarr.example.com",
-      "port": 443,
-      "https": true,
-      "paths": [
-        "/mnt/media/movies"
-      ],
-      "tags": [
-        "movies"
-      ]
-    },
-    {
-      "id": "sonarr",
-      "type": "sonarr",
-      "host": "sonarr.example.com",
-      "port": 443,
-      "https": true,
-      "paths": [
-        "/mnt/media/tv"
-      ],
-      "tags": [
-        "tv"
-      ]
-    },
-    {
-      "id": "prowlarr",
-      "type": "prowlarr",
-      "host": "prowlarr.example.com",
-      "port": 443,
-      "https": true
-    },
-    {
-      "id": "readarr",
-      "type": "readarr",
-      "host": "readarr.example.com",
-      "port": 443,
-      "https": true,
-      "tags": [
-        "books"
-      ]
-    }
-  ],
-  "downloaders": [
-    {
-      "id": "transmission",
-      "type": "transmission",
-      "host": "transmission.example.com",
-      "port": 443,
-      "https": true
-    },
-    {
-      "id": "transmission-vpn",
-      "type": "transmission",
-      "host": "transmission-vpn.example.com",
-      "port": 443,
-      "https": true
-    },
-     {
-        "id": "sabnzbd",
-        "type": "sabnzbd",
-        "host": "sabnzbd.example.com",
-        "port": 8080,
-        "https": false,
-        "apiKey": "apikey"
-     },
-     {
-      "id": "qbittorrent",
-      "type": "qbittorrent",
-      "host": "qbittorrent.example.com",
-      "port": 443,
-      "https": true,
-      "username": "admin",
-      "password": "adminadmin"
-    }
-  ]
+   "services": [
+      {
+         "id": "radarr",
+         "type": "radarr",
+         "host": "radarr.example.com",
+         "port": 443,
+         "https": true,
+         "paths": [
+            "/mnt/media/movies"
+         ],
+         "tags": [
+            "movies"
+         ]
+      },
+      {
+         "id": "sonarr",
+         "type": "sonarr",
+         "host": "sonarr.example.com",
+         "port": 443,
+         "https": true,
+         "paths": [
+            "/mnt/media/tv"
+         ],
+         "tags": [
+            "tv"
+         ]
+      },
+      {
+         "id": "prowlarr",
+         "type": "prowlarr",
+         "host": "prowlarr.example.com",
+         "port": 443,
+         "https": true
+      },
+      {
+         "id": "readarr",
+         "type": "readarr",
+         "host": "readarr.example.com",
+         "port": 443,
+         "https": true,
+         "tags": [
+            "books"
+         ]
+      }
+   ],
+   "downloaders": [
+      {
+         "id": "transmission",
+         "type": "transmission",
+         "host": "transmission.example.com",
+         "port": 443,
+         "https": true
+      },
+      {
+         "id": "transmission-vpn",
+         "type": "transmission",
+         "host": "transmission-vpn.example.com",
+         "port": 443,
+         "https": true
+      },
+      {
+         "id": "sabnzbd",
+         "type": "sabnzbd",
+         "host": "sabnzbd.example.com",
+         "port": 8080,
+         "https": false,
+         "apiKey": "apikey"
+      },
+      {
+         "id": "qbittorrent",
+         "type": "qbittorrent",
+         "host": "qbittorrent.example.com",
+         "port": 443,
+         "https": true,
+         "username": "admin",
+         "password": "adminadmin"
+      }
+   ]
 }
 ```
 
