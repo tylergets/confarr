@@ -90,14 +90,6 @@ Save as config.json in your local directory.
          "https": true
       },
       {
-         "id": "sabnzbd",
-         "type": "sabnzbd",
-         "host": "sabnzbd.example.com",
-         "port": 8080,
-         "https": false,
-         "apiKey": "apikey"
-      },
-      {
          "id": "qbittorrent",
          "type": "qbittorrent",
          "host": "qbittorrent.example.com",
@@ -105,6 +97,14 @@ Save as config.json in your local directory.
          "https": true,
          "username": "admin",
          "password": "adminadmin"
+      },
+      {
+         "id": "sabnzbd",
+         "type": "sabnzbd",
+         "host": "sabnzbd.example.com",
+         "port": 8080,
+         "https": false,
+         "apiKey": "apikey"
       }
    ]
 }
